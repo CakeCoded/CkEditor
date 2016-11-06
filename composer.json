@@ -1,0 +1,31 @@
+{
+    "name": "cakecoded/ckeditor",
+    "description": "CKEditor Helper Plugin for CakePHP 3.x.",
+    "homepage": "http://github.com/CakeCoded/CkHelper",
+    "type": "cakephp-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "CakeCoded",
+            "homepage": "http://www.cakecoded.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.16",
+        "cakephp/cakephp": "~3.0"
+    },
+    "require-dev": {
+        "composer/composer": "1.0.*@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "CkEditor\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cake\\Test\\": "vendor/cakephp/cakephp/tests",
+        }
+    },
+    "minimum-stability": "dev"
+}
