@@ -29,6 +29,8 @@ echo $this->Ck->input('field_name');
 ```
 
 This is the equilivant of using
+```php
 echo $this->Form->input('field_name');
+```
 
 Except that CK Editor will be loaded instead of a text area!
