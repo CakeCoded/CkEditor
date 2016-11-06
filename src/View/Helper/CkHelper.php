@@ -8,33 +8,33 @@ class CkHelper extends Helper
     public $helpers = ['Html', 'Form'];
 
     /**
-	* Extention of the Form Helper to insert CK Editor for a form input
-	*
-	* @param string $input The name of the field, can be field_name or Model.field_name
-	* @param array $options Options include $options['label'] for a custom label
+    * Extention of the Form Helper to insert CK Editor for a form input
+    *
+    * @param string $input The name of the field, can be field_name or Model.field_name
+    * @param array $options Options include $options['label'] for a custom label
     * @param array $ckEditorOptions This will pass any options from http://docs.ckeditor.com/#!/guide/dev_configuration to CK Editor
-	*/
+    */
     public function input($input, $options = [], $ckEditorOptions = []) {
-        echo $this->Html->script('//cdn.ckeditor.com/4.4.5.1/standard/ckeditor.js');
+        $lines = [];
+
+        $lines[] = $this->Html->script('//cdn.ckeditor.com/4.4.5.1/standard/ckeditor.js');
 
         if (!empty($options['label'])) {
-            echo $this->Form->label($input, $options['label']);
+            $lines[] = $this->Form->label($input, $options['label']);
         } else {
-        	echo $this->Form->label($input);
-        }
-
-        if (!empty($options['value'])) {
-            $this->request->data[$model][$field] = $options['value'];
+            $lines[] = $this->Form->label($input);
         }
 
         $defaultOptions = ['type' => 'textarea', 'label' => false, 'error' => false, 'required' => false];
 
         $options = array_merge($options, $defaultOptions);
 
-        echo $this->Form->error($input);
-        echo $this->Form->input($input, $options);
+        $lines[] = $this->Form->error($input);
+        $lines[] = $this->Form->input($input, $options);
 
-        echo $this->generateScript($input, $ckEditorOptions);
+        $lines[] = $this->generateScript($input, $ckEditorOptions);
+
+        return implode($lines, PHP_EOL);
     }
 
     /**
