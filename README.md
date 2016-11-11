@@ -46,8 +46,11 @@ echo $this->Form->input($input, $options, $ckEditorOptions, $ckEditorUrl);
 ```
 
 @param string $input The name of the field, can be field_name or Model.field_name
+
 @param array $options Options include $options['label'] for a custom label and any other custom Form Helper options
+
 @param array $ckEditorOptions This will pass any options from [http://docs.ckeditor.com/#!/guide/dev_configuration](http://docs.ckeditor.com/#!/guide/dev_configuration) to CK Editor
+
 @param string $ckEditorUrl This gives an option to overwrite the CK Editor URL.  You can use a local URL then if required.
 
 ## Examples
