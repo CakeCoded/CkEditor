@@ -10,14 +10,19 @@ class CkHelper extends Helper
     /**
     * Extention of the Form Helper to insert CK Editor for a form input
     *
-    * @param string $input The name of the field, can be field_name or Model.field_name
+    * @param string $input The name of the field, can be field_name or Model.field_name and any other custom Form Helper options
     * @param array $options Options include $options['label'] for a custom label
     * @param array $ckEditorOptions This will pass any options from http://docs.ckeditor.com/#!/guide/dev_configuration to CK Editor
+    * @param string $ckEditorUrl This gives an option to overwrite the CK Editor URL.  You can use a local URL then if required.
     */
-    public function input($input, $options = [], $ckEditorOptions = []) {
+    public function input($input, $options = [], $ckEditorOptions = [], $ckEditorUrl = null) {
         $lines = [];
 
-        $lines[] = $this->Html->script('//cdn.ckeditor.com/4.4.5.1/standard/ckeditor.js');
+        if (!$ckEditorUrl) {
+            $ckEditorUrl = '//cdn.ckeditor.com/4.4.5.1/standard/ckeditor.js';
+        }
+
+        $lines[] = $this->Html->script($ckEditorUrl);
 
         if (!empty($options['label'])) {
             $lines[] = $this->Form->label($input, $options['label']);
