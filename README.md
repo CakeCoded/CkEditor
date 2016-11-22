@@ -58,7 +58,7 @@ echo $this->Form->input($input, $options, $ckEditorOptions, $ckEditorUrl);
 Use an associated field name
 
 ```php
-echo $this->Ck->input('Categories.content');
+echo $this->Ck->input('category.description');
 ```
 
 Generate a custom label
@@ -70,17 +70,17 @@ echo $this->Ck->input('field_name', ['label' => 'A unique label']);
 Add options to CK Editor from [http://docs.ckeditor.com/#!/guide/dev_configuration](http://docs.ckeditor.com/#!/guide/dev_configuration)
 
 ```php
-echo $this->Ck->input('field_name', null, ['fullPage' => true, 'allowedContent' => 'true']);
+echo $this->Ck->input('field_name', [], ['fullPage' => true, 'allowedContent' => 'true']);
 ```
 
 Load a local version of CK Editor, or a different version
 
 ```php
-echo $this->Ck->input('field_name', null, null, '//cdn.ckeditor.com/4.5.11/full/ckeditor.js');
+echo $this->Ck->input('field_name', [], [], '/js/ckeditor.js');
 ```
 
 Example showing all the options together
 
 ```php
-echo $this->Ck->input('field_name', ['label' => 'A unique label'], ['fullPage' => true, 'allowedContent' => 'true'], '//cdn.ckeditor.com/4.5.11/full/ckeditor.js');
+echo $this->Ck->input('field_name', ['label' => 'A unique label'], ['fullPage' => true, 'allowedContent' => 'true'], '/js/ckeditor.js');
 ```
