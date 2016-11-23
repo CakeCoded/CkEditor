@@ -1,4 +1,4 @@
-# CkEditor plugin for CakePHP
+# CKEditor plugin for CakePHP
 
 ## Installation
 
