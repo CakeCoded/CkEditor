@@ -7,7 +7,7 @@ You can install this plugin into your CakePHP application using [composer](http:
 The recommended way to install composer packages is:
 
 ```
-composer require cakeCoded/ckeditor
+composer require cakecoded/ckeditor
 ```
 
 Then in config/bootstrap.php add:
@@ -44,14 +44,25 @@ The full explaination is as follows:
 ```php
 echo $this->Form->input($input, $options, $ckEditorOptions, $ckEditorUrl);
 ```
+```php
+@param string $input
+```
+The name of the field, can be field_name or model.field_name
 
-@param string $input The name of the field, can be field_name or Model.field_name
+```php
+@param array $options
+```
+Options include $options['label'] for a custom label and any other custom Form Helper options
 
-@param array $options Options include $options['label'] for a custom label and any other custom Form Helper options
+```php
+@param array $ckEditorOptions
+```
+This will pass any options from [http://docs.ckeditor.com/#!/guide/dev_configuration](http://docs.ckeditor.com/#!/guide/dev_configuration) to CK Editor
 
-@param array $ckEditorOptions This will pass any options from [http://docs.ckeditor.com/#!/guide/dev_configuration](http://docs.ckeditor.com/#!/guide/dev_configuration) to CK Editor
-
-@param string $ckEditorUrl This gives an option to overwrite the CK Editor URL.  You can use a local URL then if required.
+```php
+@param string $ckEditorUrl
+```
+This gives an option to overwrite the CK Editor URL.  You can use a local URL then if required.
 
 ## Examples
 
