@@ -16,13 +16,13 @@ Then in config/bootstrap.php add:
 Plugin::load('CkEditor');
 ```
 
-In either src/Controller/AppController.php, or any controller where you want to use CK Editor, add:
+In either src/Controller/AppController.php, or any controller where you want to use CKEditor, add:
 
 ```php
 public $helpers = ['CkEditor.Ck'];
 ```
 
-Finally, in your template file, simply add this to call CK Editor:
+Finally, in your template file, simply add this to call CKEditor:
 
 ```php
 echo $this->Ck->input('field_name');
@@ -33,11 +33,11 @@ This is the equilivant of using
 echo $this->Form->input('field_name');
 ```
 
-Except that CK Editor will be loaded instead of a text area!
+Except that CKEditor will be loaded instead of a text area!
 
 ## Advanced Options
 
-You can make adjustments to CK Editor and the form input as needed.  There is full flexibility in this regard.
+You can make adjustments to CKEditor and the form input as needed.  There is full flexibility in this regard.
 
 The full explaination is as follows:
 
@@ -57,12 +57,12 @@ Options include $options['label'] for a custom label and any other custom Form H
 ```php
 @param array $ckEditorOptions
 ```
-This will pass any options from [http://docs.ckeditor.com/#!/guide/dev_configuration](http://docs.ckeditor.com/#!/guide/dev_configuration) to CK Editor
+This will pass any options from [http://docs.ckeditor.com/#!/guide/dev_configuration](http://docs.ckeditor.com/#!/guide/dev_configuration) to CKEditor
 
 ```php
 @param string $ckEditorUrl
 ```
-This gives an option to overwrite the CK Editor URL.  You can use a local URL then if required.
+This gives an option to overwrite the CKEditor URL.  You can use a local URL then if required.
 
 ## Examples
 
@@ -78,13 +78,13 @@ Generate a custom label
 echo $this->Ck->input('field_name', ['label' => 'A unique label']);
 ```
 
-Add options to CK Editor from [http://docs.ckeditor.com/#!/guide/dev_configuration](http://docs.ckeditor.com/#!/guide/dev_configuration)
+Add options to CKEditor from [http://docs.ckeditor.com/#!/guide/dev_configuration](http://docs.ckeditor.com/#!/guide/dev_configuration)
 
 ```php
 echo $this->Ck->input('field_name', [], ['fullPage' => true, 'allowedContent' => 'true']);
 ```
 
-Load a local version of CK Editor, or a different version
+Load a local version of CKEditor, or a different version
 
 ```php
 echo $this->Ck->input('field_name', [], [], '/js/ckeditor.js');

@@ -71,12 +71,12 @@ class CKHelperTest extends TestCase
         $this->assertContains('<textarea name="content" id="content" rows="5"></textarea>', $result);
         $this->assertContains('<script type="text/javascript">CKEDITOR.replace(\'content\');</script>', $result);
 
-        // Test 4 - custom CK Editor options
+        // Test 4 - custom CKEditor options
         $result = $this->Ck->input('brief', [], ['fullPage' => true, 'allowedContent' => 'true']);
 
         $this->assertContains('<script type="text/javascript">CKEDITOR.replace(\'brief\', {\'fullPage\' : \'1\',\'allowedContent\' : \'true\',});</script>', $result);
 
-        // Test 5 - a custom CK Editor path
+        // Test 5 - a custom CKEditor path
         $result = $this->Ck->input('content', [], [], '/js/ckeditor.js');
 
         $this->assertContains('<script src="/js/ckeditor.js"></script>', $result);
