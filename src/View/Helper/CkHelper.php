@@ -32,7 +32,7 @@ class CkHelper extends Helper
 
         $defaultOptions = ['type' => 'textarea', 'label' => false, 'error' => false, 'required' => false];
 
-        $options = array_merge($options, $defaultOptions);
+        $options = array_merge($defaultOptions, $options);
 
         $lines[] = $this->Form->error($input);
         $lines[] = $this->Form->input($input, $options);
