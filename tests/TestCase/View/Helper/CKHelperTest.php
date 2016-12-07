@@ -10,7 +10,6 @@ use CkEditor\View\Helper\CkHelper;
  */
 class CKHelperTest extends TestCase
 {
-
     /**
      * Test subject
      *
@@ -60,8 +59,7 @@ class CKHelperTest extends TestCase
         // Test 2 - associated model
         $result = $this->Ck->input('category.description');
 
-        $this->assertContains('<label for="category-description">Description</label>', $result);
-        $this->assertContains('<div class="input textarea"><textarea name="category[description]" id="category-description" rows="5"></textarea></div>', $result);
+        $this->assertContains('<div class="input textarea"><label for="category-description">Description</label><textarea name="category[description]" id="category-description" rows="5"></textarea></div>', $result);
         $this->assertContains('<script type="text/javascript">CKEDITOR.replace(\'category.description\');</script>', $result);
 
         // Test 3 - a unique label
@@ -85,8 +83,7 @@ class CKHelperTest extends TestCase
         $result = $this->Ck->input('description', ['label' => 'A unique label'], ['fullPage' => true, 'allowedContent' => 'true'], '/js/scripts/ckeditor.js');
 
         $this->assertContains('<script src="/js/scripts/ckeditor.js"></script>', $result);
-        $this->assertContains('<label for="description">A unique label</label>', $result);
-        $this->assertContains('<div class="input textarea"><textarea name="description" id="description" rows="5"></textarea></div>', $result);
+        $this->assertContains('<div class="input textarea"><label for="description">A unique label</label><textarea name="description" id="description" rows="5"></textarea></div>', $result);
         $this->assertContains('<script type="text/javascript">CKEDITOR.replace(\'description\', {\'fullPage\' : \'1\',\'allowedContent\' : \'true\',});</script>', $result);
     }
 }

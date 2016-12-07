@@ -24,7 +24,7 @@ class CkHelper extends Helper
 
         $lines[] = $this->Html->script($ckEditorUrl);
 
-        $defaultOptions = ['type' => 'textarea', 'label' => false, 'error' => false, 'required' => false];
+        $defaultOptions = ['type' => 'textarea', 'required' => false];
 
         $options = array_merge($defaultOptions, $options);
 
