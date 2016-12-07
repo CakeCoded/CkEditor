@@ -24,12 +24,6 @@ class CkHelper extends Helper
 
         $lines[] = $this->Html->script($ckEditorUrl);
 
-        if (!empty($options['label'])) {
-            $lines[] = $this->Form->label($input, $options['label']);
-        } else {
-            $lines[] = $this->Form->label($input);
-        }
-
         $defaultOptions = ['type' => 'textarea', 'label' => false, 'error' => false, 'required' => false];
 
         $options = array_merge($defaultOptions, $options);
