@@ -51,7 +51,7 @@ class CKHelperTest extends TestCase
         // Test 1 - the standard set up
         $result = $this->Ck->input('content');
 
-        $this->assertContains('<script src="//cdn.ckeditor.com/4.4.5.1/standard/ckeditor.js"></script>', $result);
+        $this->assertContains('<script src="//cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>', $result);
         $this->assertContains('<label for="content">Content</label>', $result);
         $this->assertContains('<textarea name="content" id="content" rows="5"></textarea>', $result);
         $this->assertContains('<script type="text/javascript">CKEDITOR.replace(\'content\');</script>', $result);
