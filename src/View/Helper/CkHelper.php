@@ -19,7 +19,7 @@ class CkHelper extends Helper
         $lines = [];
 
         if (!$ckEditorUrl) {
-            $ckEditorUrl = '//cdn.ckeditor.com/4.4.5.1/standard/ckeditor.js';
+            $ckEditorUrl = '//cdn.ckeditor.com/4.6.1/standard/ckeditor.js';
         }
 
         $lines[] = $this->Html->script($ckEditorUrl);
