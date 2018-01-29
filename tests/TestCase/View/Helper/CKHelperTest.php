@@ -85,5 +85,13 @@ class CKHelperTest extends TestCase
         $this->assertContains('<script src="/js/scripts/ckeditor.js"></script>', $result);
         $this->assertContains('<div class="input textarea"><label for="description">A unique label</label><textarea name="description" id="description" rows="5"></textarea></div>', $result);
         $this->assertContains('<script type="text/javascript">CKEDITOR.replace(\'description\', {\'fullPage\' : \'1\',\'allowedContent\' : \'true\',});</script>', $result);
+
+        // Test 7 - local ckeditor plugins
+
+        $result = $this->Ck->input('content', [], [], null, [['myplugin1', 'plugins/myplugin1/', 'myplugin1.js'], ['myplugin2', 'plugins/myplugin2/', 'myplugin2.js']]);
+
+        $this->assertContains('CKEDITOR.plugins.addExternal(\'myplugin1\', \'plugins/myplugin1/\', \'myplugin1.js\');', $result);
+        $this->assertContains('CKEDITOR.plugins.addExternal(\'myplugin2\', \'plugins/myplugin2/\', \'myplugin2.js\');', $result);
+        $this->assertContains('\'extraPlugins\' : \'myplugin1,myplugin2\'', $result);
     }
 }

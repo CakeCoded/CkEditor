@@ -42,7 +42,7 @@ You can make adjustments to CKEditor and the form input as needed.  There is ful
 The full explaination is as follows:
 
 ```php
-echo $this->Form->input($input, $options, $ckEditorOptions, $ckEditorUrl);
+echo $this->Form->input($input, $options, $ckEditorOptions, $ckEditorUrl, $ckEditorPlugins);
 ```
 ```php
 @param string $input
@@ -63,6 +63,11 @@ This will pass any options from [http://docs.ckeditor.com/#!/guide/dev_configura
 @param string $ckEditorUrl
 ```
 This gives an option to overwrite the CKEditor URL.  You can use a local URL then if required.
+
+```php
+@param array $ckEditorPlugins
+```
+An array of locally installed CKEditor plugins to include, as one sub-array per plugin, in the format specified in the CKEditor documentation at [https://docs.ckeditor.com/ckeditor4/latest/api/CKEDITOR_plugins.html#addExternal](https://docs.ckeditor.com/ckeditor4/latest/api/CKEDITOR_plugins.html#addExternal). 
 
 ## Examples
 
@@ -90,8 +95,13 @@ Load a local version of CKEditor, or a different version
 echo $this->Ck->input('field_name', [], [], '/js/ckeditor.js');
 ```
 
+Load a locally installed CKEditor plugin
+```php
+echo $this->Ck->input('field_name', [], [], null, [['myplugin', '/ckplugins/myplugin/', 'myplugin.js']]);
+```
+
 Example showing all the options together
 
 ```php
-echo $this->Ck->input('field_name', ['label' => 'A unique label'], ['fullPage' => true, 'allowedContent' => 'true'], '/js/ckeditor.js');
+echo $this->Ck->input('field_name', ['label' => 'A unique label'], ['fullPage' => true, 'allowedContent' => 'true'], '/js/ckeditor.js', [['myplugin', '/ckplugins/myplugin/', 'myplugin.js']]);
 ```
