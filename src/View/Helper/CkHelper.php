@@ -33,7 +33,7 @@ class CkHelper extends Helper
         $options = array_merge($defaultOptions, $options);
 
         $lines[] = $this->Form->error($input);
-        $lines[] = $this->Form->input($input, $options);
+        $lines[] = $this->Form->control($input, $options);
 
         $lines[] = $this->generateScript($input, $ckEditorOptions, $ckEditorPlugins);
 
