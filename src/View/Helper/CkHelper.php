@@ -1,4 +1,5 @@
 <?php
+
 namespace CkEditor\View\Helper;
 
 use Cake\View\Helper;
@@ -19,7 +20,8 @@ class CkHelper extends Helper
     *         {@see https://docs.ckeditor.com/ckeditor4/latest/api/CKEDITOR_plugins.html#addExternal CKEditor documentation},
     *         i.e. $plugins = [['sample', '/myplugins/sample/', 'my_plugin.js']]
     */
-    public function input($input, $options = [], $ckEditorOptions = [], $ckEditorUrl = null, $ckEditorPlugins = []) {
+    public function input($input, $options = [], $ckEditorOptions = [], $ckEditorUrl = null, $ckEditorPlugins = [])
+    {
         $lines = [];
 
         if (!$ckEditorUrl) {
@@ -51,46 +53,45 @@ class CkHelper extends Helper
      *         i.e. $plugins = [['sample', '/myplugins/sample/', 'my_plugin.js']]
      * @return string
      */
-    protected function generateScript($input, $options = [], $plugins = []) {
+    protected function generateScript($input, $options = [], $plugins = [])
+    {
         $script = '<script type="text/javascript">';
 
         if (is_array($plugins) && !empty($plugins)) {
-
-          if (!key_exists('extraPlugins', $options)) {
-            $options['extraPlugins'] = '';
-          }
-
-          foreach ($plugins as $plugin_data) {
-
-            $extraPlugins = explode(',', $options['extraPlugins']);
-
-            $pluginIsAlreadyLoaded = FALSE;
-            foreach ($extraPlugins as $extraPlugin) {
-              if ($extraPlugin == $plugin_data[0]) {
-                $pluginIsAlreadyLoaded = TRUE;
-                break;
-              }
+            if (!key_exists('extraPlugins', $options)) {
+                $options['extraPlugins'] = '';
             }
 
-            if (!$pluginIsAlreadyLoaded) {
-              if (strlen($options['extraPlugins']) != 0) {
-                $options['extraPlugins'] .= ',';
-              }
-              $options['extraPlugins'] .= $plugin_data[0];
+            foreach ($plugins as $plugin_data) {
+                $extraPlugins = explode(',', $options['extraPlugins']);
+
+                $pluginIsAlreadyLoaded = false;
+                foreach ($extraPlugins as $extraPlugin) {
+                    if ($extraPlugin == $plugin_data[0]) {
+                        $pluginIsAlreadyLoaded = true;
+                        break;
+                    }
+                }
+
+                if (!$pluginIsAlreadyLoaded) {
+                    if (strlen($options['extraPlugins']) != 0) {
+                        $options['extraPlugins'] .= ',';
+                    }
+                    $options['extraPlugins'] .= $plugin_data[0];
+                }
+
+                $script .= 'CKEDITOR.plugins.addExternal(\'';
+                $script .= $plugin_data[0];
+                $script .= '\', \'';
+                $script .= $plugin_data[1];
+                $script .= '\', \'';
+
+                if (key_exists(2, $plugin_data)) {
+                    $script .= $plugin_data[2];
+                }
+
+                $script .= '\');';
             }
-
-            $script .= 'CKEDITOR.plugins.addExternal(\'';
-            $script .= $plugin_data[0];
-            $script .= '\', \'';
-            $script .= $plugin_data[1];
-            $script .= '\', \'';
-
-            if (key_exists(2, $plugin_data)) {
-              $script .= $plugin_data[2];
-            }
-
-            $script .= '\');';
-          }
         }
 
         $script .= 'CKEDITOR.replace(\'';
