@@ -39,7 +39,7 @@ class CkHelper extends Helper
 
         $lines[] = $this->generateScript($input, $ckEditorOptions, $ckEditorPlugins);
 
-        return implode($lines, PHP_EOL);
+        return implode(PHP_EOL, $lines);
     }
 
     /**
